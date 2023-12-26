@@ -13,8 +13,6 @@ def get_duration(visit):
   if leave:
     duration = localtime(leave) - localtime(enter)
     return duration
-  else:
-    print('Находится в хранилище', visit.passcard)
     
 
 def format_duration(duration):
@@ -54,5 +52,4 @@ def passcard_info_view(request, passcode):
     context = {
         'this_passcard_visits': all_visits
     }
-    print('',context)
     return render(request, 'passcard_info.html', context)
