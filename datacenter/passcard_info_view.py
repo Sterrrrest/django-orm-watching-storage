@@ -17,10 +17,7 @@ def is_visit_long(visit, minutes=60):
       
 
 def passcard_info_view(request, passcode):
-    try:
-        user = Passcard.objects.get(passcode=passcode)
-    except Passcard.DoesNotExist:
-        raise Http404()
+    user = get_object_or_404(Passcard, passcode=passcode)
     this_user_visits = Visit.objects.filter(passcard=user)
     all_this_passcard_visits=[]
     for visit in this_user_visits:
