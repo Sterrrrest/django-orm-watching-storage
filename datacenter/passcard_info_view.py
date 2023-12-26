@@ -33,12 +33,12 @@ def is_visit_long(visit, minutes=60):
 
 def passcard_info_view(request, passcode):
     try:
-        client = Passcard.objects.get(passcode=passcode)
+        user = Passcard.objects.get(passcode=passcode)
     except Passcard.DoesNotExist:
         raise Http404()
-    user_visits = Visit.objects.filter(passcard=client)
-    all_visits=[]
-    for visit in user_visits:
+    this_user_visits = Visit.objects.filter(passcard=user)
+    all_this_passcard_visits=[]
+    for visit in this_user_visits:
         entered_at = visit.entered_at
         duration = format_duration(get_duration(visit))
         is_strange = is_visit_long(visit)
@@ -48,8 +48,8 @@ def passcard_info_view(request, passcode):
                 'duration': duration,
                 'is_strange': is_strange
             }
-        all_visits.append(this_passcard_visits)
+        all_this_passcard_visits.append(this_passcard_visits)
     context = {
-        'this_passcard_visits': all_visits
+        'this_passcard_visits': all_this_passcard_visits
     }
     return render(request, 'passcard_info.html', context)

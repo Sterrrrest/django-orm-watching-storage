@@ -22,10 +22,10 @@ def format_duration(duration):
   
 def storage_information_view(request):
     visits = Visit.objects.all()
-    not_leaved = Visit.objects.filter(leaved_at=None)
+    users_not_leaved = Visit.objects.filter(leaved_at=None)
     all_visits = []
   
-    for visitors in not_leaved:
+    for visitors in users_not_leaved:
         who_entered = visitors.passcard.owner_name
         enter = visitors.entered_at
         duration = format_duration(get_duration(visits))
