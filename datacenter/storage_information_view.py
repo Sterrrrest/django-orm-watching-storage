@@ -1,24 +1,10 @@
 from django.db.models.fields import duration_string
-
 from datacenter.models import Passcard
 from datacenter.models import Visit
 from django.shortcuts import render
 from django.utils.timezone import localtime
-
-def get_duration(visits):
-
-    for visitors in visits:
-        enter = visitors.entered_at
-        leave = visitors.leaved_at
-        duration = localtime(leave) - localtime(enter)
-      
-        return duration  
-  
-def format_duration(duration):
-    hours = round(duration.total_seconds() // 3600)
-    minutes = round(duration.total_seconds() // 60)
-    time = f'{hours}ч {minutes}мин'
-    return time
+from get_duration import get_duration
+from format_duration import format_duration
   
 def storage_information_view(request):
     visits = Visit.objects.all()
