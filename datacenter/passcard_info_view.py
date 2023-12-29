@@ -17,8 +17,8 @@ def is_visit_long(visit, minutes=60):
       
 
 def passcard_info_view(request, passcode):
-    user = get_object_or_404(Passcard, passcode=passcode)
-    this_user_visits = Visit.objects.filter(passcard=user)
+    passcard = get_object_or_404(Passcard, passcode=passcode)
+    this_user_visits = Visit.objects.filter(passcard=passcard)
     this_passcard_visits=[]
     for visit in this_user_visits:
         this_passcard_visit = {

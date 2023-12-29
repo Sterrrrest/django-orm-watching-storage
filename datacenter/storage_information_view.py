@@ -8,10 +8,10 @@ from format_duration import format_duration
   
 def storage_information_view(request):
     visits = Visit.objects.all()
-    users_not_leaved = Visit.objects.filter(leaved_at=None)
-    all_visits = []
+    visits_not_leaved = Visit.objects.filter(leaved_at=None)
+    non_closed_visits = []
   
-    for visitors in users_not_leaved:
+    for visitors in visits_not_leaved:
         who_entered = visitors.passcard.owner_name
         enter = visitors.entered_at
         duration = format_duration(get_duration(visits))
@@ -21,8 +21,8 @@ def storage_information_view(request):
                 'duration': duration,
             }
         
-        all_visits.append(non_closed_visits)
+        non_closed_visits.append(non_closed_visits)
     context = {
-          'non_closed_visits': all_visits,
+          'non_closed_visits': non_closed_visits,
       }
     return render(request, 'storage_information.html', context)
