@@ -14,7 +14,7 @@ def storage_information_view(request):
     for visitors in visits_not_leaved:
         who_entered = visitors.passcard.owner_name
         enter = visitors.entered_at
-        duration = format_duration(get_duration(visits))
+        duration = format_duration(get_duration(visitors))
         non_closed_visits = {
                 'who_entered': who_entered,
                 'entered_at': enter,
