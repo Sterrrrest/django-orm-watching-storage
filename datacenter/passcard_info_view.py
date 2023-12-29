@@ -10,10 +10,9 @@ from functions import format_duration
   
 
 def is_visit_long(visit, minutes=60):
-      duration = get_duration(visit)
-      if duration:
-          if not duration > datetime.timedelta(minutes=minutes):
-              return False
+  duration = get_duration(visit)
+  result = duration > datetime.timedelta(minutes=minutes)
+  return result
       
 
 def passcard_info_view(request, passcode):
