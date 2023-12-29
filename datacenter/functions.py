@@ -7,3 +7,14 @@ def format_duration(duration):
     minutes = round(duration.total_seconds() // SEC_IN_MIN) % 60
     time = f'{hours}ч {minutes}мин'
     return time
+
+
+def get_duration(visit):
+  enter = visit.entered_at
+  leave = visit.leaved_at
+  if leave:
+    duration = localtime(leave) - localtime(enter)
+    return duration
+  else:
+    duration = localtime() - localtime(enter)
+    return duration
