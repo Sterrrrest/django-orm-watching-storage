@@ -5,7 +5,8 @@ from django.shortcuts import render
 from django.utils.timezone import localtime
 from functions import get_duration
 from functions import format_duration
-  
+
+
 def storage_information_view(request):
     visits_not_leaved = Visit.objects.filter(leaved_at=None)
     non_closed_visits = []

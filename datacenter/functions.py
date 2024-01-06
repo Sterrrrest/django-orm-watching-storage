@@ -1,5 +1,6 @@
 from django.utils.timezone import localtime
 
+
 def format_duration(duration):
     sec_in_hour = 3600
     sec_in_min = 60
@@ -10,11 +11,11 @@ def format_duration(duration):
 
 
 def get_duration(visit):
-  enter = visit.entered_at
-  leave = visit.leaved_at
-  if leave:
-    duration = localtime(leave) - localtime(enter)
-    return duration
-  else:
-    duration = localtime() - localtime(enter)
-    return duration
+    enter = visit.entered_at
+    leave = visit.leaved_at
+    if leave:
+        duration = localtime(leave) - localtime(enter)
+        return duration
+    else:
+        duration = localtime() - localtime(enter)
+        return duration
