@@ -5,8 +5,8 @@ from datacenter.models import Passcard
 from datacenter.models import Visit
 from django.shortcuts import render
 from django.utils.timezone import localtime
-from functions import get_duration
-from functions import format_duration
+from datacenter.functions import get_duration
+from datacenter.functions import format_duration
   
 
 def is_visit_long(visit, minutes=60):
