@@ -15,13 +15,13 @@ def storage_information_view(request):
         who_entered = visit.passcard.owner_name
         enter = visit.entered_at
         duration = format_duration(get_duration(visit))
-        non_closed_visits = {
+        non_visits = {
                 'who_entered': who_entered,
                 'entered_at': enter,
                 'duration': duration,
             }
         
-        non_closed_visits.append(non_closed_visits)
+        non_closed_visits.append(non_visits)
     context = {
           'non_closed_visits': non_closed_visits,
       }
