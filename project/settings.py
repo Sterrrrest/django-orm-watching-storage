@@ -6,21 +6,15 @@ from environs import Env
 env = Env()
 env.read_env()
 
-host = env.str("DATABASE_HOST")
-password = env.str('PASSWORD')
-name = env.str('DATABASE_NAME')
-port = env.str('DATABASE_PORT')
-user = env.str('USER')
-engine = env.str('DATABASE_ENGINE')
 
 DATABASES = {
     'default': {
-        'ENGINE': engine,
-        'HOST': host,
-        'PORT': port,
-        'NAME': name,
-        'USER': user,
-        'PASSWORD': password,
+        'ENGINE': env.str('DATABASE_ENGINE'),
+        'HOST': env.str("DATABASE_HOST"),
+        'PORT': env.str('DATABASE_PORT'),
+        'NAME': env.str('DATABASE_NAME'),
+        'USER': env.str('USER'),
+        'PASSWORD': env.str('PASSWORD'),
     }
 }
 
