@@ -1,11 +1,10 @@
 import os
 
 from environs import Env
-# from env import load_dotenv, find_dotenv
+
+
 env = Env()
 env.read_env()
-# find_dotenv()
-# load_dotenv()
 
 host = env.str("DATABASE_HOST")
 password = env.str('PASSWORD')
